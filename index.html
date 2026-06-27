@@ -454,10 +454,10 @@
 
     <nav class="navbar">
         <a onclick="switchPage(event, 'home-page')" class="nav-item active">HOME</a>
-        <a href="#" class="nav-item">IMPORTANT LINK</a>
+        <a href="#footer" class="nav-item">IMPORTANT LINK</a>
         <a onclick="switchPage(event, 'about-page')" class="nav-item">ABOUT US</a>
-        <a onclick="switchPage(event, 'team-page')" class="nav-item">TEAM MEMBERS.</a>
-        <a href="#" class="nav-item">MEMBERSHIP</a>
+        <a onclick="switchPage(event, 'team-page')" class="nav-item">TEAM MEMBERS</a>
+        <a onclick="switchPage(event, 'team-page')" class="nav-item">MEMBERSHIP</a>
         <a href="#" class="nav-item donate-btn">Donation Now</a>
         
     </nav>
@@ -579,7 +579,37 @@
         </section>
 
         <div class="page-text-content">
-            <h2 data-aos="fade-up">The Faces Behind the Mission</h2>
+            <h2 data-aos="fade-up">Administrative Members</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; margin: 40px 0;" data-aos="fade-up" data-aos-delay="100">
+                
+                <div style="background: #fdfdfd; border-top: 4px solid #E75D3A; border-radius: 4px; padding: 25px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <div style="width: 60px; height: 60px; background: #fff3f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; color: #E75D3A; font-size: 1.5rem; font-weight: bold;">R</div>
+                    <h3 style="font-size: 1.2rem; color: #333; margin-bottom: 5px;">Shri. Raju</h3>
+                    <p style="font-size: 0.9rem; color: #777; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Administration</p>
+                </div>
+
+                <div style="background: #fdfdfd; border-top: 4px solid #E75D3A; border-radius: 4px; padding: 25px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <div style="width: 60px; height: 60px; background: #fff3f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; color: #E75D3A; font-size: 1.5rem; font-weight: bold;">A</div>
+                    <h3 style="font-size: 1.2rem; color: #333; margin-bottom: 5px;">Shri. Angad</h3>
+                    <p style="font-size: 0.9rem; color: #777; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Administration</p>
+                </div>
+
+                <div style="background: #fdfdfd; border-top: 4px solid #E75D3A; border-radius: 4px; padding: 25px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <div style="width: 60px; height: 60px; background: #fff3f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; color: #E75D3A; font-size: 1.5rem; font-weight: bold;">S</div>
+                    <h3 style="font-size: 1.2rem; color: #333; margin-bottom: 5px;">Shri. Samir Kumar Sahani</h3>
+                    <p style="font-size: 0.9rem; color: #777; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Administration</p>
+                </div>
+
+                <div style="background: #fdfdfd; border-top: 4px solid #E75D3A; border-radius: 4px; padding: 25px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+                    <div style="width: 60px; height: 60px; background: #fff3f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto; color: #E75D3A; font-size: 1.5rem; font-weight: bold;">S</div>
+                    <h3 style="font-size: 1.2rem; color: #333; margin-bottom: 5px;">Shri. Sanjeev Kumar</h3>
+                    <p style="font-size: 0.9rem; color: #777; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Administration</p>
+                </div>
+
+            </div>
+
+            <h2 data-aos="fade-up" style="margin-top: 50px;">The Faces Behind the Mission</h2>
             <p data-aos="fade-up" data-aos-delay="100">Our organization is built upon the tireless dedication of over 800 active volunteers, core team members, and compassionate citizens who believe in ground-level action. From managing expansive plantation drives to coordinating emergency relief efforts, our team members serve as the vital bridge between our vision and real-world impact.</p>
             
             <p data-aos="fade-up" data-aos-delay="200">We actively collaborate with local schools, educational institutions, and youth groups to instill the values of environmental stewardship and animal welfare in the next generation. It is through these strong community bonds that we are able to sustain our initiatives year after year.</p>
@@ -594,6 +624,7 @@
     <!-- ========================= -->
     <!-- GLOBAL FOOTER (CONTACT)   -->
     <!-- ========================= -->
+    <footer id="footer"
     <section class="contact-section" data-aos="fade-up">
         <div class="contact-left">
             <h2>Contact Us</h2>
@@ -635,6 +666,7 @@
             </div>
         </div>
     </section>
+</footer>
 
     <!-- AOS Animation Library JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
