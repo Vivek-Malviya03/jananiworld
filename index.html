@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Janani Forest and Animals Welfare Trust</title>
+    <title>Janani Forest and Animals Welfare Trust(Janani World Foundation)</title>
+    
+    <!-- AOS Animation Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     
     <style>
         * {
@@ -23,6 +26,7 @@
             padding: 0 20px;
         }
         
+        /* Hero Sections */
         .hero {
             background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/hero-fern-background.jpg');
             background-size: cover;
@@ -70,13 +74,26 @@
             font-size: 1.5rem;
             margin: 20px 0;
         }
+        
+        /* Sub-page Headers */
+        .sub-header {
+            padding: 80px 20px;
+        }
+        .sub-header h1 {
+            font-size: 4rem;
+            margin-bottom: 0;
+        }
 
+        /* Navigation */
         .navbar {
             display: flex;
             border-bottom: 1px solid #ddd;
             background: #fff;
             justify-content: center;
             flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         .nav-item {
             padding: 15px 25px;
@@ -90,6 +107,7 @@
             position: relative;
             bottom: 0;
             background-color: #fff;
+            cursor: pointer;
         }
         
         .nav-item:not(.donate-btn):hover,
@@ -108,6 +126,20 @@
             bottom: 4px;
         }
 
+        /* Page Routing Classes */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .page-section.active-page {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Content Sections */
         .womens-day {
             padding: 20px;
             max-width: 1000px;
@@ -126,8 +158,8 @@
             line-height: 1.6;
         }
         .about-trust {
-            padding: 40px 20px;
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('images/hero-fern-background.jpg');
+            padding: 60px 20px;
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/hero-fern-background.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -141,12 +173,34 @@
             line-height: 1.8;
             color: #fff;
             font-weight: bold;
+            margin-bottom: 20px;
         }
         .about-trust-img {
             width: 100%;
             display: block;
             margin-top: 30px;
+            border: 3px solid rgba(255,255,255,0.2);
         }
+        
+        /* Dedicated Page Text Content */
+        .page-text-content {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+        .page-text-content h2 {
+            color: #E75D3A;
+            margin-bottom: 20px;
+            font-size: 2rem;
+            text-align: center;
+        }
+        .page-text-content p {
+            margin-bottom: 20px;
+        }
+
         .split-row {
             display: flex;
             min-height: 400px;
@@ -209,10 +263,14 @@
         }
         .school-banner {
             width: 100%;
+            max-width: 1000px;
+            margin: 0 auto 40px auto;
         }
         .school-banner img {
             width: 100%;
             display: block;
+            border-radius: 5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         .stats-section {
             display: flex;
@@ -231,12 +289,15 @@
             font-size: 1.5rem;
             font-weight: bold;
         }
+        
+        /* Footer / Contact Section */
         .contact-section {
             padding: 60px 20px;
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
             justify-content: space-between;
+            border-top: 1px solid #eee;
         }
         .contact-left {
             width: 45%;
@@ -263,6 +324,7 @@
             font-size: 0.9rem;
             cursor: pointer;
             letter-spacing: 1px;
+            font-weight: bold;
         }
         .contact-right {
             width: 45%;
@@ -281,6 +343,7 @@
             text-transform: uppercase;
             font-weight: normal;
             margin-bottom: 15px;
+            color: #E75D3A;
         }
         .social-links {
             display: flex;
@@ -297,15 +360,44 @@
             text-decoration: none;
             color: black;
             font-size: 0.8rem;
+            transition: 0.3s;
+        }
+        .social-box:hover {
+            background-color: #f5f5f5;
         }
         .social-box span {
             font-size: 1.5rem;
             font-weight: bold;
             margin-bottom: 5px;
         }
+        /* --- Ken Burns Pan & Zoom Effect --- */
+        .ken-burns-container {
+            overflow: hidden; /* Keeps the zooming image cleanly inside its borders */
+            margin-bottom: 20px;
+            border-bottom: 5px solid #E71D73;
+        }
+        
+        .ken-burns-img {
+            width: 100%;
+            display: block;
+            /* 15s controls how slow the zoom is. 'infinite alternate' makes it smoothly zoom in and out forever */
+            animation: kenBurnsAnimation 15s ease-in-out infinite alternate;
+            transform-origin: center; 
+        }
 
+        @keyframes kenBurnsAnimation {
+            0% { 
+                transform: scale(1) translate(0, 0); 
+            }
+            100% { 
+                /* Zooms in by 15% (1.15) and shifts slightly up and left (-2%) to create the 'pan' */
+                transform: scale(1.15) translate(-2%, -2%); 
+            }
+        }
+
+        /* Mobile Adjustments */
         @media (max-width: 768px) {
-            .hero h1 {
+            .hero h1, .sub-header h1 {
                 font-size: 1.8rem;
                 -webkit-text-stroke: 1px white;
                 text-shadow: 1px 1px 0 #000, 2px 2px 0 #fff, 3px 3px 0 #000;
@@ -316,6 +408,7 @@
             .navbar {
                 flex-direction: column;
                 align-items: stretch;
+                position: relative;
             }
             .nav-item {
                 text-align: center;
@@ -359,103 +452,149 @@
 </head>
 <body>
 
-    <section class="hero">
-        <div class="container">
-            <h1>JANANI FOREST AND ANIMALS<br>WELFARE TRUST</h1>
-            <div class="hero-contact">
-                <p>ADDRESS: JANGAL NAND LAL SINGH, POST MANIRAM, GORAKHPUR, UTTAR PRADESH</p>
-                <p>- 273007</p>
-                <p>Phone: +91-9956161204, 9452894291 | Email: jfaawt101@gmail.com</p>
-            </div>
-            
-            <div class="hero-logo-container">
-                <img src="images/logo-squirrel.jpg" alt="Squirrel" class="hero-logo">
-            </div>
-            
-            <p class="hero-hindi-quote">"प्रकृति बचाओ अस्तित्व बचाओ"</p>
-        </div>
-    </section>
-
     <nav class="navbar">
-        <a href="#" class="nav-item active">HOME</a>
+        <a onclick="switchPage(event, 'home-page')" class="nav-item active">HOME</a>
         <a href="#" class="nav-item">IMPORTANT LINK</a>
-        <a href="#" class="nav-item">ABOUT US</a>
-        <a href="#" class="nav-item">TEAM MEMBERS.</a>
+        <a onclick="switchPage(event, 'about-page')" class="nav-item">ABOUT US</a>
+        <a onclick="switchPage(event, 'team-page')" class="nav-item">TEAM MEMBERS.</a>
         <a href="#" class="nav-item">MEMBERSHIP</a>
         <a href="#" class="nav-item donate-btn">Donation Now</a>
-        <a href="#" class="nav-item">More</a>
+        
     </nav>
 
-    <section class="womens-day">
-        <img src="images/womens-day-event.jpg" alt="Women's Day Event">
-        <div class="womens-day-text">
-            अंतर्राष्ट्रीय महिला दिवस के अवसर पर जननी फॉरेस्ट एंड एनिमल्स वेलफेयर ट्रस्ट के द्वारा महिला सशक्तिकरण को ध्यान में रखकर आयोजित कार्यक्रम जिसमें महिलाओं के द्वारा पर्यावरण संरक्षण एवं संवर्धन के संदेश स्वरुप पौधारोपण किया गया एवं महिला समुदाय से जुड़ी समस्याओं एवं अपेक्षाओं को सार्वजनिक रूप से रखा गया तथा ट्रस्ट की ओर से उपस्थित महिलाओं को पौधे देकर सम्मानित किया गया। उम्मीद करते हैं ट्रस्ट की यह पहल महिला सशक्तिकरण में उपयोगी होगी।<br>
-            संजीव कुमार (अधिवक्ता)<br>
-            उच्च न्यायालय इलाहाबाद<br>
-            विधि एवं अनुशासन प्रभारी j-t
-        </div>
-    </section>
+    <!-- ========================= -->
+    <!-- HOME PAGE SECTION         -->
+    <!-- ========================= -->
+    <main id="home-page" class="page-section active-page">
+        <section class="hero">
+            <div class="container" data-aos="fade-up">
+                <h1>JANANI FOREST AND ANIMALS<br>WELFARE TRUST<br>(Janani World Foundation)</h1>
+                <div class="hero-contact">
+                    <p>ADDRESS: JANGAL NAND LAL SINGH, POST MANIRAM, GORAKHPUR <br>UTTAR PRADESH - 273007</p>
+                    <p>Phone: +91-9956161204, 8127079485 , 8318088331 , 9569571279 | Email: jfaawt101@gmail.com</p>
+                </div>
+                
+                <div class="hero-logo-container">
+                    <img src="images/logo-squirrel.jpg" alt="Squirrel" class="hero-logo">
+                </div>
+                
+                <p class="hero-hindi-quote">"प्रकृति बचाओ अस्तित्व बचाओ"</p>
+            </div>
+        </section>
 
-    <section class="about-trust">
-        <div class="about-trust-content">
-            <p>To protect environment, plantation animal welfare water harvesting river protection movement public awareness movement education children's old age girl wellness program disaster relief birds wellness program extra. It's a trust which primary goal to protect environment plantation animal welfare water harvesting river protection movement public awareness movement education children's old age girl wellness program disaster relief birds wellness program and extra social working organization and it is a Social, Cultural, Economic, Health, Educational, relief and rural/urban community development organization registered in Uttar Pradesh as a charitable trust in year 2019 Reg No. 241/19.</p>
-            <img src="images/3d5f6c_d82655c607344b1bb54a6dd5dc16e10b~mv2-2.jpeg" alt="Registration Detail Event" class="about-trust-img">
-        </div>
-    </section>
+        <section class="womens-day">
+            <!-- This image specifically uses the requested zoom-in effect -->
+            <div class="ken-burns-container" data-aos="zoom-in">
+    <img src="images/womens day.jpg" alt="Women's Day Event 2026" class="ken-burns-img">
+</div>
+            <img src="images/womens-day-event.jpg" alt="Women's Day Event" data-aos="fade-up">
+            <div class="womens-day-text" data-aos="fade-up">
+                
+            </div>
+        </section>
 
-    <div class="split-row">
-        <div class="split-half">
-            <img src="images/dogs-water.jpg" alt="Animals" class="split-img">
-        </div>
-        <div class="split-half bg-blue split-text">
-            KILLED FOR OUR USE, NOW THOUSANDS OF SPECIES ARE EXTINCT AS THEIR HABITAT IS GONE. AS A MATTER OF FACT THESE ANIMALS, BIRDS AND INSECTS HAVE BUILT THE ENVIRONMENT BETTER FOR THEM AND FOR US. THEY ARE THE REAL CREATORS(CREATURES) OF THE NATURE. IF THEY ARE HERE ON EARTH WE ARE HERE ON EARTH. IF THEY ARE GONE WE WILL ALSO BE GONE. SO ALWAYS KEEP IN MIND THAT IT IS WISE TO SAVE THE NATURE.
-        </div>
-    </div>
-
-    <div class="split-row">
-        <div class="split-half" style="position: relative;">
-            <img src="images/planting-tree.jpg" alt="Planting tree" class="split-img">
-            <div style="position: absolute; top: 20px; left: 20px; color: white; font-weight: bold; font-size: 1.2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
-                Ped Lagao Desh Bachao (Plant a Tree<br>and Save Country)
+        <div class="split-row">
+            <div class="split-half" data-aos="fade-right">
+                <img src="images/dogs-water.jpg" alt="Animals" class="split-img">
+            </div>
+            <div class="split-half bg-blue split-text normal-case" data-aos="fade-left">
+               <p>With over 40,000 species currently facing the immediate threat of extinction due to human expansion and habitat loss, our planet is experiencing an unprecedented biodiversity crisis. Yet, it is these very animals, birds, and insects that act as the true caretakers of our ecosystem—quietly building and maintaining the fragile balance that sustains all human life. They are the true architects of nature. Our existence is inextricably linked to theirs: if they fade away, humanity will inevitably follow. Protecting wildlife is no longer just a charitable choice; it is our ultimate act of self-preservation.</p>
             </div>
         </div>
-        <div class="split-half bg-orange split-text normal-case">
-            We can help in park adoption scheme. By helping them in scientific way about the plant and there effects. We can help govt in setting new policy or Scheme "EK GHAR EK PEDH"(एक घर एक पेड़) suppose from 125 Crore Indians if 5-10% of population adopt this scheme can lead to grater achievement.
-        </div>
-    </div>
 
-    <div class="covid-row">
-        <div class="covid-text">
-            <h2>COVID-19<br>Emergency<br>Response:<br>Situation on<br>Ground</h2>
-            <a href="#" class="btn-outline">Our Team</a>
+        <div class="split-row">
+            <div class="split-half" style="position: relative;" data-aos="fade-right">
+                <img src="images/planting-tree.jpg" alt="Planting tree" class="split-img">
+                <div style="position: absolute; top: 20px; left: 20px; color: white; font-weight: bold; font-size: 1.2rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+                    Ped Lagao Desh Bachao <br>(Plant a Tree and Save Country)
+                </div>
+            </div>
+            <div class="split-half bg-orange split-text normal-case" data-aos="fade-left">
+                We drive environmental change by partnering with local communities in Park Adoption Schemes, applying a rigorous scientific approach to select native plant species that offer the highest ecological benefits. Looking at the larger picture, our goal is to support government policy by championing grassroots initiatives like "Ek Ghar, Ek Pedh" (एक घर एक पेड़). In a nation of over 145 Crore citizens, if just 5% to 10% of the population adopts this scheme, it would mean adding 7 to 14 Crore new trees to our green cover. This single collective effort can fundamentally transform our country's climate resilience.
+            </div>
         </div>
-        <div class="covid-img"></div>
-    </div>
 
-    <div class="school-banner">
-        <img src="images/school-banner.jpg" alt="School Event Banner">
-    </div>
+        <div class="covid-row" data-aos="fade-up">
+            <div class="covid-text">
+                <h2>COVID-19<br>Emergency<br>Response:<br>Situation on<br>Ground</h2>
+                <a href="#" class="btn-outline">Our Team</a>
+            </div>
+            <div class="covid-img"></div>
+        </div>
 
-    <section class="stats-section">
-        <div class="stat-item">
-            <h3>40K</h3>
-            <p>Endangered<br>Species</p>
-        </div>
-        <div class="stat-item">
-            <h3>800</h3>
-            <p>Volunteers</p>
-        </div>
-        <div class="stat-item">
-            <h3>140</h3>
-            <p>Conservation<br>Programs</p>
-        </div>
-        <div class="stat-item">
-            <h3>1</h3>
-            <p>Earth for Us to<br>Protect</p>
-        </div>
-    </section>
+        <section class="stats-section" id="stats-counter-section">
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="0">
+                <h3>40K</h3>
+                <p>Endangered<br>Species</p>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="100">
+                <!-- Counter applied strictly to the Volunteers stat -->
+                <h3><span class="counter" data-target="800">0</span><span>+</span></h3>
+                <p>Volunteers</p>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
+                <h3>140</h3>
+                <p>Conservation<br>Programs</p>
+            </div>
+            <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
+                <h3>1</h3>
+                <p>Earth for Us to<br>Protect</p>
+            </div>
+        </section>
+    </main>
 
-    <section class="contact-section">
+
+    <!-- ========================= -->
+    <!-- ABOUT US PAGE SECTION     -->
+    <!-- ========================= -->
+    <main id="about-page" class="page-section">
+        <section class="hero sub-header">
+            <div class="container">
+                <h1 data-aos="fade-up">ABOUT US</h1>
+            </div>
+        </section>
+
+        <section class="about-trust">
+            <div class="about-trust-content">
+                <p data-aos="fade-up">Janani Forest and Animal Welfare Trust (Janani World Foundation) is a registered charitable organization dedicated to creating a balanced, compassionate world. Our work spans the vital fields of environmental protection—including continuous plantation drives, localized water harvesting, and river conservation movements—alongside a deep commitment to animal and bird welfare.</p>
+                <p data-aos="fade-up" data-aos-delay="100">Driven by the belief that a community thrives only when its most vulnerable are protected, we run grassroots programs centered on public awareness, holistic education, and tailored wellness initiatives for children, young girls, and the elderly. Whether navigating long-term rural development or stepping up for immediate disaster relief, we stand as a beacon of socio-economic and cultural support.</p>
+                <p data-aos="fade-up" data-aos-delay="200" style="text-align: center; color: #FFD700; margin-top: 30px;">
+                    <strong>Registered in Uttar Pradesh as an official charitable trust in the year 2019 | Reg No. 241/19.</strong>
+                </p>
+                
+                <img src="images/3d5f6c_d82655c607344b1bb54a6dd5dc16e10b~mv2-2.jpeg" alt="Registration Detail Event" class="about-trust-img" data-aos="fade-up">
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ========================= -->
+    <!-- TEAM MEMBERS PAGE SECTION -->
+    <!-- ========================= -->
+    <main id="team-page" class="page-section">
+        <section class="hero sub-header">
+            <div class="container">
+                <h1 data-aos="fade-up">OUR TEAM</h1>
+            </div>
+        </section>
+
+        <div class="page-text-content">
+            <h2 data-aos="fade-up">The Faces Behind the Mission</h2>
+            <p data-aos="fade-up" data-aos-delay="100">Our organization is built upon the tireless dedication of over 800 active volunteers, core team members, and compassionate citizens who believe in ground-level action. From managing expansive plantation drives to coordinating emergency relief efforts, our team members serve as the vital bridge between our vision and real-world impact.</p>
+            
+            <p data-aos="fade-up" data-aos-delay="200">We actively collaborate with local schools, educational institutions, and youth groups to instill the values of environmental stewardship and animal welfare in the next generation. It is through these strong community bonds that we are able to sustain our initiatives year after year.</p>
+        </div>
+
+        <div class="school-banner" data-aos="fade-up">
+            <img src="images/school-banner.jpg" alt="School Event Banner">
+        </div>
+    </main>
+
+
+    <!-- ========================= -->
+    <!-- GLOBAL FOOTER (CONTACT)   -->
+    <!-- ========================= -->
+    <section class="contact-section" data-aos="fade-up">
         <div class="contact-left">
             <h2>Contact Us</h2>
             <form>
@@ -476,11 +615,11 @@
             <div class="contact-details">
                 <div class="contact-col">
                     <h4>ADDRESS</h4>
-                    <p>JANGAL NAND LAL SINGH,<br>POST MANIRAM, GORAKHPUR<br>UTTAR PRADESH-273007</p>
+                    <p>JANGAL NAND LAL SINGH,<br>POST MANIRAM, GORAKHPUR<br>UTTAR PRADESH-<br>273007</p>
                 </div>
                 <div class="contact-col">
                     <h4>PHONE</h4>
-                    <p>9956161204<br>9452894291</p>
+                    <p>9956161204<br> 8127079485 <br> 8318088331 <br> 9569571279</p>
                 </div>
                 <div class="contact-col">
                     <h4>EMAIL</h4>
@@ -497,5 +636,88 @@
         </div>
     </section>
 
+    <!-- AOS Animation Library JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Routing and Interactive JavaScript -->
+    <script>
+        // Initialize Scroll Reveal Animations
+        AOS.init({
+            duration: 1000,
+            once: true // Animations happen only once when scrolled into view
+        });
+
+        // Single Page Routing Logic
+        function switchPage(event, pageId) {
+            event.preventDefault();
+            
+            // Hide all sections
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => page.classList.remove('active-page'));
+            
+            // Remove active style from nav
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                if(!item.classList.contains('donate-btn')) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Show requested page
+            document.getElementById(pageId).classList.add('active-page');
+            
+            // Set nav item as active
+            if (event.currentTarget && !event.currentTarget.classList.contains('donate-btn')) {
+                event.currentTarget.classList.add('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+
+            // Refresh AOS so animations trigger correctly on the new page
+            setTimeout(() => {
+                AOS.refresh();
+            }, 100);
+        }
+
+        // Animated Counter Up Logic
+        const counters = document.querySelectorAll('.counter');
+        let hasAnimated = false; 
+
+        const animateCounters = () => {
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-target');
+                const updateCount = () => {
+                    const count = +counter.innerText;
+                    // Calculate increment steps (adjustable for speed)
+                    const inc = target / 50; 
+                    
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 30);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+            hasAnimated = true;
+        }
+
+        // Intersection Observer to trigger counter when section is in view
+        const statsSection = document.getElementById('stats-counter-section');
+        const observer = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting && !hasAnimated) {
+                animateCounters();
+            }
+        }, { threshold: 0.5 }); // Triggers when 50% of the section is visible
+
+        if(statsSection) {
+            observer.observe(statsSection);
+        }
+    </script>
 </body>
 </html>
